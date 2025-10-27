@@ -1,11 +1,9 @@
-Here is a complete README.md file for the post-quantum cryptography project we built. You can save this file as README.md in the same directory as your client.py and server.py files.
-
 Post-Quantum Authenticated Key Exchange Demo
 This project is a functional, end-to-end demonstration of a quantum-safe authenticated key exchange (AKE) in Python.
 
 It shows how a client and server can securely establish a shared secret for symmetric encryption (AES) in a way that is resistant to attacks from both classical and quantum computers. This implementation specifically prevents Man-in-the-Middle (MITM) attacks by using post-quantum digital signatures for authentication.
 
-🚀 Features
+Features
 Key Encapsulation: Uses ML-KEM (CRYSTALS-Kyber), a NIST-standardized PQC algorithm, to securely establish a shared secret.
 
 Authentication: Uses ML-DSA (CRYSTALS-Dilithium), a NIST-standardized PQC digital signature algorithm, to prove the server's identity and prevent MITM attacks.
@@ -14,7 +12,7 @@ Hybrid Encryption: Uses the established PQC shared secret as a 32-byte key for t
 
 Implementation: A clear, two-part client/server model using standard Python libraries (oqs, cryptography, socket).
 
-⚙️ How It Works
+How It Works
 This project demonstrates the core "handshake" that will power future secure communication protocols (like TLS 1.4).
 
 The server.py starts and generates two sets of PQC key pairs:
@@ -49,12 +47,12 @@ The server uses its kem_private_key to decapsulate the ciphertext and retrieve t
 
 Both client and server now possess a secure, authenticated, 32-byte shared secret. They use this as the key for AES-256-GCM to exchange an encrypted message.
 
-🔧 Prerequisites
+Prerequisites
 Python 3.7+
 
 pip (Python package installer)
 
-📦 Installation
+Installation
 Clone this repository or download the server.py and client.py files into a new directory.
 
 Install the required Python libraries using pip:
@@ -62,7 +60,7 @@ Install the required Python libraries using pip:
 Bash
 
 pip install oqs cryptography
-🏃 Usage
+Usage
 You must use two separate terminal windows to run this project: one for the server and one for the client.
 
 Terminal 1: Start the Server
@@ -73,7 +71,7 @@ Bash
 python server.py
 Expected Output:
 
-🚀 Starting PQC Server (Alice)...
+Starting PQC Server (Alice)...
 KEM Algorithm: Kyber768
 Signature Algorithm: Dilithium3
 Generated KEM and Signature key pairs.
@@ -89,16 +87,16 @@ The client will automatically connect to the server, perform the full authentica
 
 Expected Output:
 
-🚀 Starting PQC Client (Bob)...
+Starting PQC Client (Bob)...
 Connected to server at 127.0.0.1:65432
 Receiving authentication data from server...
 Received all data. Verifying signature...
-✅ Signature is valid! Server is authentic.
+Signature is valid! Server is authentic.
 Encapsulating secret using trusted KEM public key...
 Sending ciphertext to server...
 Sending encrypted message...
 
-🎉 FULL SUCCESS: Message sent securely.
+FULL SUCCESS: Message sent securely.
 Client shutting down.
 Check Server Terminal
 If you look back at Terminal 1, you will see the server's output complete, showing the successfully decrypted message from the client.
@@ -109,7 +107,7 @@ Expected Output (Continued):
 Client (Bob) connected from ('127.0.0.1', 51234)
 Sending public keys and signature to client...
 Received ciphertext from client.
-✅ Successfully decapsulated shared secret!
+Successfully decapsulated shared secret!
 Received encrypted message.
 
 ==============================
